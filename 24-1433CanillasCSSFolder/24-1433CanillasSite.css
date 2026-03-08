@@ -387,16 +387,16 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  width: 100%;
+  width: 500%;
 }
 
 .hero-photo-ring {
-  width: 170px;
-  height: 170px;
-  border-radius: 50%;
-  padding: 4px;
+  width: 200px;
+  height: 200px;
+  border-radius: 70%;
+  padding: 6px;
   background: linear-gradient(135deg, var(--primary), var(--light-yellow), var(--primary));
-  background-size: 200% 200%;
+  background-size: 100% 100%;
   animation: gradientSpin 4s linear infinite;
   box-shadow: 0 12px 40px rgba(230,165,32,0.35);
   flex-shrink: 0;
@@ -429,8 +429,8 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 16px;
-  gap: 6px;
+  padding: 26px;
+  gap: 10px;
 }
 
 .hero-photo-fallback span {
@@ -891,7 +891,7 @@ pre {
 
 /* Stdin section */
 .stdin-section {
-  background: var(--code-bg);
+  background: var(--stdin-bg, var(--code-bg));
   border-top: 1px solid rgba(255,215,122,0.1);
   padding: 10px 14px;
   flex-shrink: 0;
@@ -1222,8 +1222,7 @@ pre {
   .section { padding: 70px 32px; }
   .tab-btn { font-size: 0.72rem; padding: 7px 12px; }
   .modal-body { flex-direction: column; }
-  .modal-left { border-right: none; border-bottom: 1px solid var(--border); max-height: 45%; }
-  .modal-right { min-height: 280px; }
+  .modal-left { border-right: none; border-bottom: 1px solid var(--border); max-height: unset; }
   .modal { height: min(95vh, 740px); }
 }
 
@@ -1291,87 +1290,78 @@ pre {
   /* Tab bar */
   .modal-tab-bar { display: flex; flex-shrink: 0; }
 
-  /* Body fills remaining height */
+  /* Modal body — simple flex column */
   .modal-body {
     flex: 1;
     min-height: 0;
+    overflow: hidden;
     position: relative;
-    display: block;
   }
 
-  /* Both panels fill body absolutely, one shown at a time */
+  /* Panels fill modal-body absolutely */
   .modal-left,
   .modal-right {
     position: absolute;
-    inset: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     display: none;
     flex-direction: column;
-    border-right: none;
-    border-bottom: none;
-    height: 100%;
+    border: none;
     overflow: hidden;
   }
   .modal-left.mob-active,
   .modal-right.mob-active { display: flex; }
 
-  /* Hide panel labels — tab bar replaces them */
-  .modal-left  .panel-label,
+  /* Hide desktop panel labels */
+  .modal-left .panel-label,
   .modal-right .panel-label { display: none; }
 
-  /* Code editor — dark zone, takes most space */
+  /* Code editor fills everything except stdin */
   .code-editor {
-    flex: 1;
-    min-height: 0;
+    flex: 1 !important;
+    min-height: 0 !important;
     font-size: 0.72rem;
     line-height: 1.6;
+    overflow-y: auto;
   }
 
-  /* Stdin — light zone pinned at bottom */
+  /* Stdin pinned at bottom — fixed 110px */
   .stdin-section {
-    flex-shrink: 0;
-    height: 28%;
-    min-height: 110px;
-    max-height: 140px;
-    display: flex;
-    flex-direction: column;
-    padding: 8px 12px 8px;
-    background: #FFFDF5;
-    border-top: 2px solid #E6A520;
-  }
-  [data-theme="dark"] .stdin-section {
-    background: #2A2010;
-    border-top: 2px solid #E6A520;
+    flex: 0 0 110px !important;
+    min-height: 110px !important;
+    max-height: 110px !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 6px 12px 8px !important;
+    background: #FFFDF5 !important;
+    border-top: 2px solid #E6A520 !important;
+    box-sizing: border-box !important;
   }
   .stdin-label {
-    font-size: 0.58rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    color: #7A4A00;
-    margin-bottom: 5px;
-    text-transform: uppercase;
+    font-size: 0.58rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.5px !important;
+    color: #7A4A00 !important;
+    margin-bottom: 4px !important;
+    flex-shrink: 0 !important;
   }
-  [data-theme="dark"] .stdin-label { color: #E6A520; }
   .stdin-input {
-    flex: 1;
-    min-height: 0;
-    font-size: 0.72rem;
-    padding: 6px 10px;
-    resize: none;
-    background: #FFFFFF;
-    color: #1A1A1A;
-    border: 1px solid #E6A520;
-    border-radius: 8px;
-    font-family: 'Courier New', monospace;
+    flex: 1 !important;
+    min-height: 0 !important;
+    max-height: unset !important;
+    font-size: 0.72rem !important;
+    padding: 5px 10px !important;
+    resize: none !important;
+    background: #FFFFFF !important;
+    color: #1A1A1A !important;
+    border: 1px solid #E6A520 !important;
+    border-radius: 8px !important;
+    box-sizing: border-box !important;
   }
-  .stdin-input::placeholder { color: #AAAAAA; font-style: italic; }
-  [data-theme="dark"] .stdin-input {
-    background: #1A1200;
-    color: #FFD77A;
-    border-color: #7A4A00;
-  }
-  .stdin-hint { display: none; }
+  .stdin-input::placeholder { color: #AAAAAA !important; font-style: italic !important; }
+  .stdin-hint { display: none !important; }
 
-  .output-panel { flex: 1; min-height: 0; font-size: 0.76rem; }
+  .output-panel { flex: 1 !important; min-height: 0 !important; font-size: 0.76rem; }
 
   /* Footer */
   .modal-footer {
@@ -1394,6 +1384,20 @@ pre {
   .hero-name { font-size: 1.9rem; }
   .hero-btns { flex-direction: column; align-items: center; }
   .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+}
+
+/* Mobile modal stdin — dark mode overrides */
+@media (max-width: 680px) {
+  [data-theme="dark"] .stdin-section {
+    background: #1E1500 !important;
+    border-top: 2px solid #E6A520 !important;
+  }
+  [data-theme="dark"] .stdin-label { color: #E6A520 !important; }
+  [data-theme="dark"] .stdin-input {
+    background: #2A1A00 !important;
+    color: #FFD77A !important;
+    border-color: #7A4A00 !important;
+  }
 }
 
 
