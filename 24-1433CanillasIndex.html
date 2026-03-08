@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DaVnz — Java Programming Portfolio by Vincent Martin Torres Canillas, 2nd Year BSIT, QCU">
+  <title>DaVnz | Vincent Martin Torres Canillas</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="24-1433CanillasImagesFolder/24-1433CanillasLogo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="24-1433CanillasCSSFolder/24-1433CanillasSite.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       FLOATING NAVBAR
+       ============================================================ -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-logo">
+      <img
+        src="24-1433CanillasImagesFolder/24-1433CanillasLogo.png"
+        alt="DaVnz Logo"
+        class="nav-logo-img"
+        id="navLogoImg"
+      />
+      DaVnz
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#hero"          class="active">Home</a></li>
+      <li><a href="#bio">          Basic I/O</a></li>
+      <li><a href="#vars">         Variables</a></li>
+      <li><a href="#conditionals"> Conditionals</a></li>
+      <li><a href="#loops">        Loops</a></li>
+    </ul>
+
+    <div class="nav-divider" aria-hidden="true"></div>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
+      <span>&#9790;</span> Dark
+    </button>
+  </nav>
+
+
+  <!-- ============================================================
+       HERO SECTION
+       ============================================================ -->
+  <section id="hero" class="hero" aria-label="Introduction">
+
+    <!-- Left: Text Content -->
+    <div class="hero-left">
+      <div class="hero-hey">HEY! &nbsp;I AM</div>
+
+      <h1 class="hero-name">
+        <span class="line1">Vincent Martin</span>
+        <span class="line2">
+          <span class="normal">Torres </span><span class="highlight">Canillas</span>
+        </span>
+      </h1>
+
+      <div class="hero-tagline">
+        I'm a <span class="typewriter-text" id="typewriterText"></span><span class="tagline-cursor" aria-hidden="true"></span>
+      </div>
+
+      <p class="hero-desc">
+        A passionate 2nd Year BSIT student at Quezon City University, diving deep into
+        Java programming fundamentals and building interactive learning experiences
+        through hands-on code samples and exercises.
+      </p>
+
+      <div class="hero-btns">
+        <a href="#bio"   class="btn-primary"   aria-label="Go to Basic Input/Output section">
+          &#9654; Start Learning
+        </a>
+        <a href="#loops" class="btn-secondary"  aria-label="Go to Loops section">
+          &#128196; View Portfolio
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Photo + Info Card -->
+    <div class="hero-right" aria-label="Student information card">
+
+      <!-- Photo placeholder -->
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-ring">
+          <img
+            src="24-1433CanillasImagesFolder/24-1433CanillasPhoto.png"
+            alt="Vincent Martin Torres Canillas"
+            class="hero-photo"
+            id="heroPhoto"
+            onerror="this.style.display='none'; document.getElementById('heroPhotoFallback').style.display='flex';"
+          />
+          <div class="hero-photo-fallback" id="heroPhotoFallback">
+            <span>VMC</span>
+            <small>Replace with your photo:<br>24-1433CanillasPhoto.png</small>
+          </div>
+        </div>
+        <div class="hero-photo-label">
+          <strong>Vincent Martin Torres Canillas</strong>
+          <span>BSIT Student · QCU</span>
+        </div>
+      </div>
+
+      <!-- Info Card -->
+      <div class="info-card">
+        <ul class="card-info" aria-label="Student details">
+          <li>
+            <span class="lbl">Student No.</span>
+            <span class="val">24-1433</span>
+          </li>
+          <li>
+            <span class="lbl">Year Level</span>
+            <span class="val">2nd Year BSIT</span>
+          </li>
+          <li>
+            <span class="lbl">Semester</span>
+            <span class="val">2nd Sem AY 2025&ndash;2026</span>
+          </li>
+          <li>
+            <span class="lbl">GWA</span>
+            <span class="val">1.50</span>
+          </li>
+          <li>
+            <span class="lbl">Status</span>
+            <span class="val">&#127925; Single</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </section><!-- /hero -->
+
+
+  <!-- ============================================================
+       SECTION 1 — BASIC INPUT / OUTPUT
+       ============================================================ -->
+  <section id="bio" class="section" aria-labelledby="bio-title">
+    <div class="section-header">
+      <div class="section-badge">Section 01</div>
+      <h2 class="section-title" id="bio-title">Basic <span>Input &amp; Output</span></h2>
+      <p class="section-sub">
+        Learn how to read user input with <code>Scanner</code> and display output
+        using <code>System.out.println()</code> in Java.
+      </p>
+    </div>
+
+    <div id="section-bio">
+      <div class="tab-nav"        role="tablist"  aria-label="Basic I/O samples"></div>
+      <div class="cards-container"               aria-live="polite"></div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION 2 — VARIABLES & DATA TYPES
+       ============================================================ -->
+  <section id="vars" class="section" aria-labelledby="vars-title">
+    <div class="section-header">
+      <div class="section-badge">Section 02</div>
+      <h2 class="section-title" id="vars-title">Variables &amp; <span>Data Types</span></h2>
+      <p class="section-sub">
+        Explore Java's core data types: <code>int</code>, <code>double</code>,
+        <code>String</code>, and <code>boolean</code> through practical examples.
+      </p>
+    </div>
+
+    <div id="section-vars">
+      <div class="tab-nav"         role="tablist" aria-label="Variables & Data Types samples"></div>
+      <div class="cards-container"               aria-live="polite"></div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION 3 — CONDITIONAL STATEMENTS
+       ============================================================ -->
+  <section id="conditionals" class="section" aria-labelledby="cond-title">
+    <div class="section-header">
+      <div class="section-badge">Section 03</div>
+      <h2 class="section-title" id="cond-title">Conditional <span>Statements</span></h2>
+      <p class="section-sub">
+        Master <code>if-else</code> and <code>switch</code> statements to make
+        decisions and control the flow of your Java programs.
+      </p>
+    </div>
+
+    <div id="section-conditionals">
+      <div class="tab-nav"         role="tablist" aria-label="Conditional Statements samples"></div>
+      <div class="cards-container"               aria-live="polite"></div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION 4 — LOOPS
+       ============================================================ -->
+  <section id="loops" class="section" aria-labelledby="loops-title">
+    <div class="section-header">
+      <div class="section-badge">Section 04</div>
+      <h2 class="section-title" id="loops-title">Loop <span>Structures</span></h2>
+      <p class="section-sub">
+        Use <code>for</code>, <code>while</code>, and <code>do-while</code> loops
+        to repeat code and solve iterative problems efficiently.
+      </p>
+    </div>
+
+    <div id="section-loops">
+      <div class="tab-nav"         role="tablist" aria-label="Loops samples"></div>
+      <div class="cards-container"               aria-live="polite"></div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-brand">DaVnz</div>
+    <p class="footer-info">
+      <strong>Vincent Martin Torres Canillas</strong> &bull;
+      Student No. 24-1433 &bull;
+      2nd Year BSIT &bull;
+      2nd Semester AY 2025&ndash;2026 &bull;
+      Quezon City University
+    </p>
+  </footer>
+
+
+  <!-- ============================================================
+       TRY IT YOURSELF — MODAL
+       ============================================================ -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+
+      <!-- Header -->
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitle">Try it Yourself</div>
+        <button class="modal-close" id="modalClose" aria-label="Close modal">&#10005;</button>
+      </div>
+
+      <!-- Mobile Code/Output Tab Switcher (hidden on desktop) -->
+      <div class="modal-tab-bar" id="modalTabBar">
+        <button class="modal-tab-pill active" id="mobTabCode">&#128196; Code</button>
+        <button class="modal-tab-pill"        id="mobTabOutput">&#9654; Output</button>
+      </div>
+
+      <!-- Body: Editor (left) + Output (right) -->
+      <div class="modal-body">
+
+        <!-- LEFT: Editable Code Editor -->
+        <div class="modal-left">
+          <div class="panel-label">
+            <div class="dot" aria-hidden="true"></div>
+            Java Code Editor &nbsp;&mdash;&nbsp; Ctrl+Enter to Run
+          </div>
+          <textarea
+            class="code-editor"
+            id="codeEditor"
+            spellcheck="false"
+            autocorrect="off"
+            autocapitalize="off"
+            aria-label="Java code editor"
+            placeholder="// Your Java code will appear here..."></textarea>
+
+          <!-- Standard Input -->
+          <div class="stdin-section">
+            <div class="stdin-label">&#9654; Standard Input (stdin)</div>
+            <textarea
+              class="stdin-input"
+              id="stdinInput"
+              spellcheck="false"
+              aria-label="Standard input"
+              placeholder="e.g. Vincent&#10;25&#10;1.75"></textarea>
+            <div class="stdin-hint">One value per line — answers to your program's input prompts.</div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Output Panel -->
+        <div class="modal-right">
+          <div class="panel-label">
+            <div class="dot" aria-hidden="true"></div>
+            Output
+          </div>
+          <div class="output-panel" id="outputPanel" aria-live="polite">
+            <span class="out-placeholder">Click &#9654; Run Code to execute your Java program...</span>
+          </div>
+        </div>
+
+      </div><!-- /modal-body -->
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button class="run-btn"   id="runBtn">&#9654; Run Code</button>
+        <button class="clear-btn" id="clearBtn">Clear Output</button>
+        <span class="status-text" aria-live="polite">
+          <span class="status-dot" id="statusDot"></span>
+          <span id="statusText">Ready</span>
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Bottom Mobile Nav -->
+  <nav class="bottom-nav" id="bottomNav" aria-label="Mobile bottom navigation">
+    <a href="#hero" class="bottom-nav-item active" data-section="hero">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Home</span>
+    </a>
+    <a href="#bio" class="bottom-nav-item" data-section="bio">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+      <span>Basic I/O</span>
+    </a>
+    <a href="#vars" class="bottom-nav-item" data-section="vars">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      <span>Variables</span>
+    </a>
+    <a href="#conditionals" class="bottom-nav-item" data-section="conditionals">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      <span>If/Else</span>
+    </a>
+    <a href="#loops" class="bottom-nav-item" data-section="loops">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+      <span>Loops</span>
+    </a>
+  </nav>
+
+  <!-- Main JavaScript -->
+  <script src="24-1433CanillasJSFolder/24-1433CanillasSite.js"></script>
+
+</body>
+</html>
