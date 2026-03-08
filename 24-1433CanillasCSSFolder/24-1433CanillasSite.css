@@ -377,7 +377,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;   /* ← add this */
   gap: 18px;
   width: 280px;
 }
@@ -1319,15 +1318,29 @@ pre {
   .modal-left  .panel-label,
   .modal-right .panel-label { display: none; }
 
+  /* Code editor takes all space */
   .code-editor {
     flex: 1;
     min-height: 0;
     font-size: 0.72rem;
     line-height: 1.6;
+    border-bottom: 1px solid rgba(255,215,122,0.15);
   }
-  .stdin-section { flex-shrink: 0; }
-  .stdin-input   { min-height: 44px; max-height: 60px; font-size: 0.72rem; }
-  .output-panel  { flex: 1; min-height: 0; font-size: 0.76rem; }
+  /* Stdin compact at bottom */
+  .stdin-section {
+    flex-shrink: 0;
+    padding: 6px 10px 5px;
+  }
+  .stdin-label { font-size: 0.6rem; margin-bottom: 3px; }
+  .stdin-input {
+    min-height: 34px;
+    max-height: 34px;
+    font-size: 0.7rem;
+    padding: 5px 10px;
+    resize: none;
+  }
+  .stdin-hint   { display: none; }
+  .output-panel { flex: 1; min-height: 0; font-size: 0.76rem; }
 
   /* Footer */
   .modal-footer {
