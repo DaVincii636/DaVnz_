@@ -110,7 +110,7 @@ function esc(str) {
    While testing locally: 'http://localhost:3000'
    After deploying:       'https://YOUR-APP-NAME.onrender.com'
    ============================================================ */
-const BACKEND_URL = 'http://localhost:3000';
+const BACKEND_URL = 'https://davnz-backend.onrender.com';
 const SAMPLES = {
 
   /* ---- SECTION 1: BASIC INPUT / OUTPUT ---- */
