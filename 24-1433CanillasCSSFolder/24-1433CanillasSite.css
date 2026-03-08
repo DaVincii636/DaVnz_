@@ -1318,28 +1318,59 @@ pre {
   .modal-left  .panel-label,
   .modal-right .panel-label { display: none; }
 
-  /* Code editor takes all space */
+  /* Code editor — dark zone, takes most space */
   .code-editor {
     flex: 1;
     min-height: 0;
     font-size: 0.72rem;
     line-height: 1.6;
-    border-bottom: 1px solid rgba(255,215,122,0.15);
   }
-  /* Stdin compact at bottom */
+
+  /* Stdin — light zone pinned at bottom */
   .stdin-section {
     flex-shrink: 0;
-    padding: 6px 10px 5px;
+    height: 28%;
+    min-height: 110px;
+    max-height: 140px;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px 8px;
+    background: #FFFDF5;
+    border-top: 2px solid #E6A520;
   }
-  .stdin-label { font-size: 0.6rem; margin-bottom: 3px; }
+  [data-theme="dark"] .stdin-section {
+    background: #2A2010;
+    border-top: 2px solid #E6A520;
+  }
+  .stdin-label {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #7A4A00;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+  [data-theme="dark"] .stdin-label { color: #E6A520; }
   .stdin-input {
-    min-height: 34px;
-    max-height: 34px;
-    font-size: 0.7rem;
-    padding: 5px 10px;
+    flex: 1;
+    min-height: 0;
+    font-size: 0.72rem;
+    padding: 6px 10px;
     resize: none;
+    background: #FFFFFF;
+    color: #1A1A1A;
+    border: 1px solid #E6A520;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
   }
-  .stdin-hint   { display: none; }
+  .stdin-input::placeholder { color: #AAAAAA; font-style: italic; }
+  [data-theme="dark"] .stdin-input {
+    background: #1A1200;
+    color: #FFD77A;
+    border-color: #7A4A00;
+  }
+  .stdin-hint { display: none; }
+
   .output-panel { flex: 1; min-height: 0; font-size: 0.76rem; }
 
   /* Footer */
