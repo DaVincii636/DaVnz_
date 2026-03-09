@@ -117,7 +117,7 @@ const SAMPLES = {
   bio: [
     {
       title: 'Hello User',
-      desc: 'Asks the user to enter their name using Scanner, then greets them with a personalized welcome message.',
+      desc: 'Reads a name from stdin and greets the user with a personalized welcome message.',
       stdin: 'Vincent',
       code:
 `import java.util.Scanner;
@@ -126,17 +126,18 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter your name: ");
         String name = sc.nextLine();
 
+        System.out.println("Name entered  : " + name);
         System.out.println("Hello, " + name + "! Welcome!");
+
         sc.close();
     }
 }`
     },
     {
       title: 'Simple Addition',
-      desc: 'Reads two numbers from the user and displays their sum using basic arithmetic operations.',
+      desc: 'Reads two numbers from stdin and displays their sum using basic arithmetic operations.',
       stdin: '15\n25',
       code:
 `import java.util.Scanner;
@@ -145,20 +146,20 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter first number: ");
         double a = sc.nextDouble();
-
-        System.out.print("Enter second number: ");
         double b = sc.nextDouble();
 
-        System.out.println("Sum: " + (a + b));
+        System.out.println("First number  : " + a);
+        System.out.println("Second number : " + b);
+        System.out.println("Sum           : " + (a + b));
+
         sc.close();
     }
 }`
     },
     {
       title: 'Temperature Converter',
-      desc: 'Converts a Celsius input to Fahrenheit, then converts it back — demonstrating both temperature formulas.',
+      desc: 'Reads a Celsius value from stdin, converts it to Fahrenheit, then converts back — demonstrating both formulas.',
       stdin: '100',
       code:
 `import java.util.Scanner;
@@ -167,14 +168,14 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter temperature in Celsius: ");
         double celsius = sc.nextDouble();
 
         double fahrenheit = (celsius * 9.0 / 5.0) + 32;
-        System.out.printf("%.2f C = %.2f F%n", celsius, fahrenheit);
+        double backToC    = (fahrenheit - 32) * 5.0 / 9.0;
 
-        double backToC = (fahrenheit - 32) * 5.0 / 9.0;
-        System.out.printf("%.2f F = %.2f C%n", fahrenheit, backToC);
+        System.out.printf("Celsius entered : %.2f C%n",    celsius);
+        System.out.printf("Converted       : %.2f F%n",    fahrenheit);
+        System.out.printf("Back to Celsius : %.2f C%n",    backToC);
 
         sc.close();
     }
@@ -182,7 +183,7 @@ public class Main {
     },
     {
       title: 'BMI Calculator',
-      desc: 'Computes Body Mass Index from weight and height, then prints the corresponding health category.',
+      desc: 'Reads weight and height from stdin, computes Body Mass Index, and prints the health category.',
       stdin: '70\n1.75',
       code:
 `import java.util.Scanner;
@@ -191,19 +192,19 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter weight (kg): ");
         double weight = sc.nextDouble();
-
-        System.out.print("Enter height (m): ");
         double height = sc.nextDouble();
 
         double bmi = weight / (height * height);
-        System.out.printf("BMI: %.2f%n", bmi);
 
-        if      (bmi < 18.5) System.out.println("Category: Underweight");
-        else if (bmi < 25.0) System.out.println("Category: Normal weight");
-        else if (bmi < 30.0) System.out.println("Category: Overweight");
-        else                 System.out.println("Category: Obese");
+        System.out.printf("Weight entered : %.2f kg%n",  weight);
+        System.out.printf("Height entered : %.2f m%n",   height);
+        System.out.printf("BMI computed   : %.2f%n",     bmi);
+
+        if      (bmi < 18.5) System.out.println("BMI Category   : Underweight");
+        else if (bmi < 25.0) System.out.println("BMI Category   : Normal weight");
+        else if (bmi < 30.0) System.out.println("BMI Category   : Overweight");
+        else                 System.out.println("BMI Category   : Obese");
 
         sc.close();
     }
@@ -211,7 +212,7 @@ public class Main {
     },
     {
       title: 'ASCII Value',
-      desc: 'Reads a single character from input and displays its ASCII numeric value using a type cast.',
+      desc: 'Reads a single character from stdin and displays its ASCII numeric value using a type cast.',
       stdin: 'A',
       code:
 `import java.util.Scanner;
@@ -220,11 +221,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter a character: ");
         char ch = sc.next().charAt(0);
 
-        System.out.println("Character  : " + ch);
-        System.out.println("ASCII Value: " + (int) ch);
+        System.out.println("Character entered : " + ch);
+        System.out.println("ASCII Value       : " + (int) ch);
 
         sc.close();
     }
@@ -236,7 +236,7 @@ public class Main {
   vars: [
     {
       title: 'Age Category Variable',
-      desc: 'Stores the user\'s age in an int and assigns a category String based on the age range using if-else.',
+      desc: 'Reads an age from stdin, stores it in an int, and assigns a category String using if-else.',
       stdin: '20',
       code:
 `import java.util.Scanner;
@@ -245,7 +245,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter your age: ");
         int age = sc.nextInt();
 
         String category;
@@ -254,8 +253,8 @@ public class Main {
         else if (age < 60) category = "Adult";
         else               category = "Senior";
 
-        System.out.println("Age      : " + age);
-        System.out.println("Category : " + category);
+        System.out.println("Age entered  : " + age);
+        System.out.println("Category     : " + category);
 
         sc.close();
     }
@@ -263,7 +262,7 @@ public class Main {
     },
     {
       title: 'Square and Cube',
-      desc: 'Reads a number and stores its square and cube in separate double variables, then prints all three values.',
+      desc: 'Reads a number from stdin and stores its square and cube in separate double variables.',
       stdin: '5',
       code:
 `import java.util.Scanner;
@@ -272,15 +271,13 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter a number: ");
-        double num = sc.nextDouble();
-
+        double num    = sc.nextDouble();
         double square = num * num;
         double cube   = num * num * num;
 
-        System.out.println("Number : " + num);
-        System.out.println("Square : " + square);
-        System.out.println("Cube   : " + cube);
+        System.out.println("Number entered : " + num);
+        System.out.println("Square         : " + square);
+        System.out.println("Cube           : " + cube);
 
         sc.close();
     }
@@ -288,7 +285,7 @@ public class Main {
     },
     {
       title: 'Greater Than Check',
-      desc: 'Stores comparison results in boolean variables and prints a truth table for >, <, and == operators.',
+      desc: 'Reads two numbers from stdin, stores comparison results in boolean variables, and prints a truth table.',
       stdin: '10\n5',
       code:
 `import java.util.Scanner;
@@ -297,19 +294,18 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter first number: ");
         double a = sc.nextDouble();
-
-        System.out.print("Enter second number: ");
         double b = sc.nextDouble();
 
         boolean aGreater = a > b;
         boolean bGreater = b > a;
         boolean equal    = a == b;
 
+        System.out.println("First number   : " + a);
+        System.out.println("Second number  : " + b);
         System.out.println("--- Truth Table ---");
-        System.out.println(a + " > "  + b + " : " + aGreater);
-        System.out.println(b + " > "  + a + " : " + bGreater);
+        System.out.println(a + " > "  + b + "  : " + aGreater);
+        System.out.println(b + " > "  + a + "  : " + bGreater);
         System.out.println(a + " == " + b + " : " + equal);
 
         sc.close();
@@ -318,7 +314,7 @@ public class Main {
     },
     {
       title: 'User Profile',
-      desc: 'Demonstrates four data types — String, int, double, and boolean — to build and display a user profile.',
+      desc: 'Reads name, age, and GPA from stdin — demonstrating String, int, double, and boolean data types.',
       stdin: 'Vincent\n20\n1.50',
       code:
 `import java.util.Scanner;
@@ -327,18 +323,13 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter name: ");
         String name = sc.nextLine();
-
-        System.out.print("Enter age: ");
-        int age = sc.nextInt();
-
-        System.out.print("Enter GPA: ");
-        double gpa = sc.nextDouble();
+        int    age  = sc.nextInt();
+        double gpa  = sc.nextDouble();
 
         boolean isStudent = true;
 
-        System.out.println("\\n=== User Profile ===");
+        System.out.println("=== User Profile ===");
         System.out.println("Name       : " + name);
         System.out.println("Age        : " + age);
         System.out.printf ("GPA        : %.2f%n", gpa);
@@ -350,7 +341,7 @@ public class Main {
     },
     {
       title: 'Time Converter',
-      desc: 'Converts total minutes into hours and remaining minutes using integer division (/) and modulo (%) operators.',
+      desc: 'Reads total minutes from stdin and converts them into hours and remaining minutes using / and % operators.',
       stdin: '135',
       code:
 `import java.util.Scanner;
@@ -359,15 +350,14 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter total minutes: ");
         int totalMinutes = sc.nextInt();
+        int hours        = totalMinutes / 60;
+        int minutes      = totalMinutes % 60;
 
-        int hours   = totalMinutes / 60;
-        int minutes = totalMinutes % 60;
-
-        System.out.println(totalMinutes + " minutes = "
-            + hours + " hour(s) and "
-            + minutes + " minute(s)");
+        System.out.println("Minutes entered : " + totalMinutes);
+        System.out.println("Hours           : " + hours);
+        System.out.println("Remaining mins  : " + minutes);
+        System.out.println("Result          : " + hours + " hour(s) and " + minutes + " minute(s)");
 
         sc.close();
     }
@@ -379,7 +369,7 @@ public class Main {
   conditionals: [
     {
       title: 'Even or Odd',
-      desc: 'Uses the modulo operator inside an if-else statement to determine whether a number is even or odd.',
+      desc: 'Reads a number from stdin and uses the modulo operator inside an if-else to determine if it is even or odd.',
       stdin: '7',
       code:
 `import java.util.Scanner;
@@ -388,13 +378,14 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter a number: ");
         int num = sc.nextInt();
 
+        System.out.println("Number entered : " + num);
+
         if (num % 2 == 0) {
-            System.out.println(num + " is Even");
+            System.out.println("Result         : " + num + " is Even");
         } else {
-            System.out.println(num + " is Odd");
+            System.out.println("Result         : " + num + " is Odd");
         }
 
         sc.close();
@@ -403,7 +394,7 @@ public class Main {
     },
     {
       title: 'Pass or Fail',
-      desc: 'Checks if the marks entered are 50 or above and prints PASS or FAIL accordingly using an if-else statement.',
+      desc: 'Reads a mark from stdin and prints PASS if 50 or above, FAIL otherwise, using an if-else statement.',
       stdin: '75',
       code:
 `import java.util.Scanner;
@@ -412,15 +403,14 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter marks (0-100): ");
         int marks = sc.nextInt();
 
-        System.out.println("Marks  : " + marks);
+        System.out.println("Marks entered  : " + marks);
 
         if (marks >= 50) {
-            System.out.println("Result : PASS");
+            System.out.println("Result         : PASS");
         } else {
-            System.out.println("Result : FAIL");
+            System.out.println("Result         : FAIL");
         }
 
         sc.close();
@@ -429,7 +419,7 @@ public class Main {
     },
     {
       title: 'Largest of Two Numbers',
-      desc: 'Compares two numbers with an if-else-if chain and prints which one is larger, or if both are equal.',
+      desc: 'Reads two numbers from stdin and compares them with an if-else-if chain to find the larger value.',
       stdin: '42\n17',
       code:
 `import java.util.Scanner;
@@ -438,18 +428,18 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter first number: ");
         double a = sc.nextDouble();
-
-        System.out.print("Enter second number: ");
         double b = sc.nextDouble();
 
+        System.out.println("First number   : " + a);
+        System.out.println("Second number  : " + b);
+
         if (a > b) {
-            System.out.println(a + " is larger than " + b);
+            System.out.println("Larger number  : " + a);
         } else if (b > a) {
-            System.out.println(b + " is larger than " + a);
+            System.out.println("Larger number  : " + b);
         } else {
-            System.out.println("Both numbers are equal: " + a);
+            System.out.println("Result         : Both numbers are equal (" + a + ")");
         }
 
         sc.close();
@@ -458,7 +448,7 @@ public class Main {
     },
     {
       title: 'Simple Login System',
-      desc: 'Validates username and password against stored credentials using .equals() inside a compound if condition.',
+      desc: 'Reads username and password from stdin and validates them using .equals() inside a compound if condition.',
       stdin: 'admin\n1234',
       code:
 `import java.util.Scanner;
@@ -470,16 +460,16 @@ public class Main {
         final String CORRECT_USER = "admin";
         final String CORRECT_PASS = "1234";
 
-        System.out.print("Enter username: ");
         String username = sc.nextLine();
-
-        System.out.print("Enter password: ");
         String password = sc.nextLine();
 
+        System.out.println("Username entered : " + username);
+        System.out.println("Password entered : " + "*".repeat(password.length()));
+
         if (username.equals(CORRECT_USER) && password.equals(CORRECT_PASS)) {
-            System.out.println("Login Successful! Welcome, " + username + "!");
+            System.out.println("Login Status     : SUCCESS — Welcome, " + username + "!");
         } else {
-            System.out.println("Login Failed! Invalid credentials.");
+            System.out.println("Login Status     : FAILED — Invalid credentials.");
         }
 
         sc.close();
@@ -488,7 +478,7 @@ public class Main {
     },
     {
       title: 'Simple Calculator',
-      desc: 'Performs +, -, *, or / on two numbers using a switch statement based on the operator character entered.',
+      desc: 'Reads two numbers and an operator from stdin, then performs the calculation using a switch statement.',
       stdin: '10\n+\n5',
       code:
 `import java.util.Scanner;
@@ -497,24 +487,23 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter first number: ");
-        double a = sc.nextDouble();
+        double a  = sc.nextDouble();
+        char   op = sc.next().charAt(0);
+        double b  = sc.nextDouble();
 
-        System.out.print("Enter operator (+, -, *, /): ");
-        char op = sc.next().charAt(0);
-
-        System.out.print("Enter second number: ");
-        double b = sc.nextDouble();
+        System.out.println("First number   : " + a);
+        System.out.println("Operator       : " + op);
+        System.out.println("Second number  : " + b);
 
         switch (op) {
-            case '+': System.out.printf("Result: %.2f%n", a + b); break;
-            case '-': System.out.printf("Result: %.2f%n", a - b); break;
-            case '*': System.out.printf("Result: %.2f%n", a * b); break;
+            case '+': System.out.printf("Result         : %.2f%n", a + b); break;
+            case '-': System.out.printf("Result         : %.2f%n", a - b); break;
+            case '*': System.out.printf("Result         : %.2f%n", a * b); break;
             case '/':
-                if (b != 0) System.out.printf("Result: %.2f%n", a / b);
-                else        System.out.println("Error: Division by zero!");
+                if (b != 0) System.out.printf("Result         : %.2f%n", a / b);
+                else        System.out.println("Result         : Error — Division by zero!");
                 break;
-            default: System.out.println("Invalid operator!");
+            default: System.out.println("Result         : Invalid operator!");
         }
 
         sc.close();
@@ -527,12 +516,13 @@ public class Main {
   loops: [
     {
       title: 'Print 1 to 10',
-      desc: 'Uses a for loop to iterate from 1 to 10 and prints each number separated by dashes on the same line.',
+      desc: 'Uses a for loop to iterate from 1 to 10 and prints each number separated by dashes.',
       stdin: '',
       code:
 `public class Main {
     public static void main(String[] args) {
         System.out.println("Numbers from 1 to 10:");
+        System.out.println("----------------------");
 
         for (int i = 1; i <= 10; i++) {
             System.out.print(i);
@@ -540,13 +530,14 @@ public class Main {
         }
 
         System.out.println();
+        System.out.println("----------------------");
         System.out.println("Done!");
     }
 }`
     },
     {
       title: 'Sum of First N Numbers',
-      desc: 'Uses a for loop to accumulate the sum of all integers from 1 up to N entered by the user.',
+      desc: 'Reads N from stdin and uses a for loop to accumulate the sum of all integers from 1 up to N.',
       stdin: '10',
       code:
 `import java.util.Scanner;
@@ -555,7 +546,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter N: ");
         int n = sc.nextInt();
 
         int sum = 0;
@@ -563,14 +553,16 @@ public class Main {
             sum += i;
         }
 
-        System.out.println("Sum of first " + n + " numbers = " + sum);
+        System.out.println("N entered      : " + n);
+        System.out.println("Sum of 1 to " + n + " : " + sum);
+
         sc.close();
     }
 }`
     },
     {
       title: 'Multiplication Table',
-      desc: 'Generates the complete multiplication table of a number from 1 to 10 using a for loop.',
+      desc: 'Reads a number from stdin and generates its complete multiplication table from 1 to 10 using a for loop.',
       stdin: '7',
       code:
 `import java.util.Scanner;
@@ -579,9 +571,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter a number: ");
         int num = sc.nextInt();
 
+        System.out.println("Number entered : " + num);
         System.out.println("Multiplication Table of " + num + ":");
         System.out.println("----------------------------");
 
@@ -595,7 +587,7 @@ public class Main {
     },
     {
       title: 'Number Guessing Game',
-      desc: 'Uses a do-while loop to keep asking the user to guess the secret number until they get it correct.',
+      desc: 'Reads guesses from stdin using a do-while loop until the secret number 7 is correctly guessed.',
       stdin: '3\n5\n7',
       code:
 `import java.util.Scanner;
@@ -604,24 +596,26 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int secret = 7;
+        int secret   = 7;
         int guess;
         int attempts = 0;
 
-        System.out.println("Guess the secret number (between 1-10):");
+        System.out.println("Secret number  : Between 1 and 10");
+        System.out.println("-----------------------------------");
 
         do {
-            System.out.print("Your guess: ");
             guess = sc.nextInt();
             attempts++;
+            System.out.println("Guess #" + attempts + "       : " + guess);
 
             if (guess != secret) {
-                System.out.println("Wrong! Try again.");
+                System.out.println("Result         : Wrong! Try again.");
             }
         } while (guess != secret);
 
-        System.out.println("You're correct! The number was " + secret + "!");
-        System.out.println("You got it in " + attempts + " attempt(s).");
+        System.out.println("-----------------------------------");
+        System.out.println("Correct answer : " + secret);
+        System.out.println("Attempts used  : " + attempts);
 
         sc.close();
     }
@@ -629,7 +623,7 @@ public class Main {
     },
     {
       title: 'Factorial Calculator',
-      desc: 'Computes the factorial of N using a for loop, multiplying each integer from 1 to N stored in a long.',
+      desc: 'Reads N from stdin and computes its factorial using a for loop, storing the result in a long variable.',
       stdin: '6',
       code:
 `import java.util.Scanner;
@@ -638,16 +632,16 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter a number: ");
         int n = sc.nextInt();
 
         long factorial = 1;
-
         for (int i = 1; i <= n; i++) {
             factorial *= i;
         }
 
-        System.out.println(n + "! = " + factorial);
+        System.out.println("Number entered : " + n);
+        System.out.println("Factorial      : " + n + "! = " + factorial);
+
         sc.close();
     }
 }`
