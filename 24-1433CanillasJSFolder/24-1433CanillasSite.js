@@ -309,13 +309,11 @@ public class Main {
         int    age  = sc.nextInt();
         double gpa  = sc.nextDouble();
 
-        boolean isStudent = true;
 
         System.out.println("=== User Profile ===");
         System.out.println("Name       : " + name);
         System.out.println("Age        : " + age);
         System.out.printf ("GPA        : %.2f%n", gpa);
-        System.out.println("Is Student : " + isStudent);
 
         sc.close();
     }
@@ -389,10 +387,10 @@ public class Main {
 
         System.out.println("Marks entered  : " + marks);
 
-        if (marks >= 50) {
+        if (marks >= 75) {
             System.out.println("Result         : PASS");
         } else {
-            System.out.println("Result         : FAIL");
+            System.out.println("Result         : FAILED");
         }
 
         sc.close();
@@ -873,7 +871,7 @@ clearBtn.addEventListener('click', () => {
 /* KEYBOARD SHORTCUTS
    Ctrl+Enter → Run Code
    Tab        → Insert 4 spaces */
-   
+
 codeEditor.addEventListener('keydown', e => {
   if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
     e.preventDefault();
