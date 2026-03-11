@@ -92,7 +92,9 @@ function esc(str) {
 }
 
 /* BACKEND URL —  Render | local: 'http://localhost:3000' */
-const BACKEND_URL = 'https://davnz-backend.onrender.com';
+const BACKEND_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:3000'
+  : 'https://davnz-backend.onrender.com';
 const SAMPLES = {
 
   /* ---- SECTION 1: BASIC INPUT / OUTPUT ---- */
@@ -308,6 +310,7 @@ public class Main {
         String name = sc.nextLine();
         int    age  = sc.nextInt();
         double gpa  = sc.nextDouble();
+
 
 
         System.out.println("=== User Profile ===");
