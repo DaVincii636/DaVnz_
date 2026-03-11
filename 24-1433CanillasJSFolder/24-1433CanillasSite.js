@@ -1,16 +1,8 @@
-/* ============================================================
-   24-1433CanillasSite.js
-   Project: DaVnz
-   Student: Vincent Martin Torres Canillas | 24-1433
-   2nd Year BSIT | 2nd Sem AY 2025-2026 | QCU
-   Real Java execution via Piston API (emkc.org + piston.rodeo fallback)
-   ============================================================ */
+/* 24-1433CanillasSite.js */
 
 'use strict';
 
-/* ============================================================
-   THEME TOGGLE
-   ============================================================ */
+/* THEME TOGGLE */
 const themeToggle = document.getElementById('themeToggle');
 const html = document.documentElement;
 let isDark = localStorage.getItem('davnz-theme') === 'dark';
@@ -24,9 +16,7 @@ function applyTheme(dark) {
 applyTheme(isDark);
 themeToggle.addEventListener('click', () => applyTheme(!isDark));
 
-/* ============================================================
-   TYPEWRITER ANIMATION
-   ============================================================ */
+/* TYPEWRITER ANIMATION */
 const typewriterEl = document.getElementById('typewriterText');
 const typeRoles = [
   'UI/UX Designer.',
@@ -50,7 +40,7 @@ function typeLoop() {
     charIdx++;
     typeDelay = 100;
     if (charIdx === current.length) {
-      typeDelay  = 1800;   // pause at end
+      typeDelay  = 1800; 
       isDeleting = true;
     }
   } else {
@@ -70,9 +60,7 @@ function typeLoop() {
 // Start after hero animation settles
 setTimeout(typeLoop, 1100);
 
-/* ============================================================
-   NAVBAR — active link on scroll
-   ============================================================ */
+/* NAVBAR — active link on scroll */
 const allSections = document.querySelectorAll('section[id]');
 const allNavLinks = document.querySelectorAll('.nav-links a');
 
@@ -94,9 +82,7 @@ function updateActiveNav() {
 window.addEventListener('scroll', updateActiveNav, { passive: true });
 updateActiveNav();
 
-/* ============================================================
-   HELPER
-   ============================================================ */
+/* HELPER */
 function esc(str) {
   return String(str)
     .replace(/&/g, '&amp;')
@@ -105,11 +91,7 @@ function esc(str) {
     .replace(/"/g, '&quot;');
 }
 
-/* ============================================================
-   BACKEND URL — change this after you deploy to Render!
-   While testing locally: 'http://localhost:3000'
-   After deploying:       'https://YOUR-APP-NAME.onrender.com'
-   ============================================================ */
+/* BACKEND URL —  Render | local: 'http://localhost:3000' */
 const BACKEND_URL = 'https://davnz-backend.onrender.com';
 const SAMPLES = {
 
@@ -649,9 +631,8 @@ public class Main {
   ]
 };
 
-/* ============================================================
-   RENDER SECTIONS — tabs + cards
-   ============================================================ */
+/* RENDER SECTIONS — tabs + cards */
+
 function renderSection(key, containerId) {
   const data      = SAMPLES[key];
   const container = document.getElementById(containerId);
@@ -751,9 +732,7 @@ renderSection('vars',         'section-vars');
 renderSection('conditionals', 'section-conditionals');
 renderSection('loops',        'section-loops');
 
-/* ============================================================
-   MODAL DOM REFERENCES
-   ============================================================ */
+/* MODAL DOM REFERENCES */
 const modalOverlay = document.getElementById('modalOverlay');
 const modalTitleEl = document.getElementById('modalTitle');
 const codeEditor   = document.getElementById('codeEditor');
@@ -787,9 +766,7 @@ function setMobTab(tab) {
 mobTabCode  .addEventListener('click', () => setMobTab('code'));
 mobTabOutput.addEventListener('click', () => setMobTab('output'));
 
-/* ============================================================
-   MODAL — OPEN / CLOSE
-   ============================================================ */
+/* MODAL — OPEN / CLOSE */
 function openModal(sample) {
   modalTitleEl.innerHTML = `Try it Yourself &mdash; <span>${sample.title}</span>`;
   codeEditor.value       = sample.code;
@@ -811,9 +788,7 @@ modalClose.addEventListener('click', closeModal);
 modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-/* ============================================================
-   OUTPUT & STATUS HELPERS
-   ============================================================ */
+/* OUTPUT & STATUS HELPERS */
 function setOutput(type, content) {
   if (type === 'placeholder') {
     outputPanel.innerHTML = `<span class="out-placeholder">${content}</span>`;
@@ -834,10 +809,7 @@ function setStatus(state, text) {
   statusText.textContent = text;
 }
 
-/* ============================================================
-   RUN CODE — calls Node.js backend → JDoodle
-   Change BACKEND_URL at the top of this file after deploying!
-   ============================================================ */
+/* RUN CODE — calls Node.js backend → JDoodle */
 runBtn.addEventListener('click', async () => {
   const code  = codeEditor.value.trim();
   const stdin = stdinInput.value;
@@ -892,19 +864,16 @@ runBtn.addEventListener('click', async () => {
   clearBtn.disabled = false;
 });
 
-/* ============================================================
-   CLEAR OUTPUT
-   ============================================================ */
+/* CLEAR OUTPUT */
 clearBtn.addEventListener('click', () => {
   setOutput('placeholder', 'Output cleared. Click \u25B6 Run Code to execute again.');
   setStatus('idle', 'Ready');
 });
 
-/* ============================================================
-   KEYBOARD SHORTCUTS
+/* KEYBOARD SHORTCUTS
    Ctrl+Enter → Run Code
-   Tab        → Insert 4 spaces
-   ============================================================ */
+   Tab        → Insert 4 spaces */
+   
 codeEditor.addEventListener('keydown', e => {
   if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
     e.preventDefault();
